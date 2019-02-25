@@ -62,7 +62,7 @@ module Pkgpurge
         end
       end
 
-      if children.sort == empty_children.sort
+      if (children - empty_children).empty?
         # All children are empty, so we can purge this path
         yield(entry, path)
       else
