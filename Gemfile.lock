@@ -1,0 +1,24 @@
+PATH
+  remote: .
+  specs:
+    pkgpurge (0.1.0)
+      plist
+      thor
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    plist (3.5.0)
+    rake (12.3.2)
+    thor (0.20.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler
+  pkgpurge!
+  rake
+
+BUNDLED WITH
+   1.17.2
