@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name = "pkgpurge"
-  spec.version = "0.1.2"
+  spec.version = "0.1.3"
   spec.authors = ["Yoshimasa Niwa"]
   spec.email = ["niw@niw.at"]
   spec.summary = spec.description = "A simple helper tool to purge `intaller(8)` packages"
