@@ -50,7 +50,7 @@ module Pkgpurge
       end
 
       children = if !File.symlink?(path) && File.directory?(path)
-        Dir.children(path)
+        Dir.entries(path) - [".", ".."]
       else
         []
       end

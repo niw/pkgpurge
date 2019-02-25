@@ -15,7 +15,7 @@ module Pkgpurge
     private
 
     def parse!
-      relative_install_prefix_path = Pathname.new(install_prefix_path).relative_path_from("/").to_s
+      relative_install_prefix_path = Pathname.new(install_prefix_path).relative_path_from(Pathname.new("/")).to_s
 
       root = nil
       lsbom.lines.each do |line|
