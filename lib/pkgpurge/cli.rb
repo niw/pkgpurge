@@ -3,6 +3,10 @@ require "thor"
 
 module Pkgpurge
   class CLI < Thor
+    def self.exit_on_failure
+      true
+    end
+
     desc "ls PATH", "List entries for given receipt plist at PATH"
     def ls(path)
       root = Receipt.new(path).root
@@ -18,11 +22,15 @@ module Pkgpurge
     def verify(path)
       root = Receipt.new(path).root
 
+      valid = true
       Entry.traverse_entry_with_path(root, "/") do |entry, path|
         verify_entry(entry, path, options).each do |modification|
           report path, *modification
+          valid = false
         end
       end
+
+      exit(false) unless valid
     end
 
     desc "ls-purge PATH", "List entries that can be purged for given receipt plist at PATH"
