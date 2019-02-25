@@ -53,7 +53,8 @@ module Pkgpurge
 
     def traverse_purge_entry_with_path(entry, parent_path, &block)
       path = File.expand_path(File.join(parent_path, entry.name))
-      unless File.exists?(path)
+
+      unless File.exists?(path) || File.symlink?(path)
         return true
       end
 
@@ -81,7 +82,7 @@ module Pkgpurge
     def verify_entry(entry, path, options = {})
       modifications = []
 
-      unless File.exists?(path)
+      unless File.exists?(path) || File.symlink?(path)
         modifications << ["missing"]
         return modifications
       end
